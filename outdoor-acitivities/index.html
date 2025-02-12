@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Suggester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #aaa;
+            max-width: 500px;
+            margin: auto;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: left;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #aaa;
+        }
+
+        .logo {
+            margin: 15px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="logo.png" alt="Outdoor Activities" width="200" height="auto">
+    </div>
+    <div class="container">
+        <h2>Find Activities Based on Your Profile</h2>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <input type="number" id="age" placeholder="Enter your age" required>
+        <input type="number" id="weight" placeholder="Enter your weight (kg)" required>
+        <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <button onclick="generateActivities()">Suggest Activities</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function generateActivities() {
+            let name = document.getElementById("name").value;
+            let age = parseInt(document.getElementById("age").value);
+            let weight = parseInt(document.getElementById("weight").value);
+            let gender = document.getElementById("gender").value;
+            let activities = "";
+
+            if (age <= 12) {
+                activities += "<li>Visit Gërmia Park</li><li>Bear Sanctuary</li><li>Kids Skiing at Brezovica</li>";
+            } else if (age <= 19) {
+                activities += "<li>Paintball & Rock Climbing</li><li>Kayaking on Badovc Lake</li><li>Escape Room Challenge</li>";
+            } else if (age <= 40) {
+                activities += "<li>Paragliding in Prizren</li><li>Wine Tasting in Rahovec</li><li>CrossFit & Gym Training</li>";
+            } else if (age <= 60) {
+                activities += "<li>Yoga & Wellness Retreats</li><li>Fishing in Radoniq Lake</li><li>Scenic Drives to Sharri Mountains</li>";
+            } else {
+                activities += "<li>Thermal Spa Retreats</li><li>Bird Watching at Mirusha Waterfalls</li><li>Light Walks in Prizren</li>";
+            }
+
+            if (weight < 22) {
+                activities += "<li>Long-distance running</li><li>Martial Arts Training</li><li>Cycling around Gračanica Lake</li>";
+            } else if (weight <= 27) {
+                activities += "<li>Moderate Trekking</li><li>Football Matches</li><li>Swimming at National Sports Center</li>";
+            } else {
+                activities += "<li>Aqua Aerobics</li><li>Gentle Yoga</li><li>Healthy Cooking Workshops</li>";
+            }
+
+            if (gender === "male") {
+                activities += "<li>Football Leagues</li><li>Weightlifting</li><li>Camping in Rugova Valley</li>";
+            } else {
+                activities += "<li>Pilates & Yoga</li><li>Art & Craft Workshops</li><li>Beauty & Wellness Spa</li>";
+            }
+
+            let essay = `<h3>Hello ${name},</h3>
+                        <p>Based on your age, weight, and gender, here are some activities you might enjoy in Kosovo:</p>
+                        <ul>${activities}</ul>`;
+            
+            document.getElementById("result").innerHTML = essay;
+        }
+    </script>
+</body>
+</html>

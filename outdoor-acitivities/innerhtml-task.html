@@ -1,0 +1,33 @@
+<html>
+    <head><title>innerHTML exam</title></head>
+    <body>
+        <div class="result" id="result">
+            <h1>Hello Earth!</h1>
+        </div>
+
+        <style>
+            .result h1, h2 {
+                color: red;
+                font-size: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50vh;
+            }
+
+            .result h3 {
+                color: blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50vh;
+            }
+        </style>
+        <script>
+            let helloWorld = "<h3>Hello World!</h3>";
+
+    document.getElementById("result").innerHTML = helloWorld;
+
+        </script>
+    </body>
+</html>

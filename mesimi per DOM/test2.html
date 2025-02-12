@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Javascript DOM task</title>
+    </head>
+    <body>
+        <div class="message" id="message">Welcome, this is your next task</div>
+        <style>
+            .message {
+                font-family: sans-serif;
+                padding:25px;
+                color: red;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                margin:2px;
+                font-size: 45px;
+
+            }
+        </style>
+        <script>
+            let name = prompt("what is your name?");
+
+            let age = prompt("what is your age?");
+
+            let ageResponse = Number(age) + 10;
+
+            let quote = "";
+
+            if (age >= 0 && age < 35) {
+                quote = "The best is yet to come!";
+            } else if (age >= 35 && age < 70 ) {
+                quote = "Your in the time that wou'll be working the most!";
+            } else {
+                quote = "Remember, Age is just a number!";
+            }
+
+            let message = document.getElementById("message");
+
+            message.textContent = "Hi and welcome " + name + ", you are" + age + " years old." + quote;
+
+        </script>
+    </body>
+</html>

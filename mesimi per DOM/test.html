@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>DOM Manipulation Task</title>
+    </head>
+    <body>
+        <div class="message" id="message">Welcome</div>
+
+        <style>
+            .message {
+                margin-top: 70px;
+                color: red;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 70px;
+                font-family: sans-serif;
+                padding: 30px;
+            }
+        </style>
+        <script>
+            let name = prompt("What is your Name?");
+
+            let age = prompt("What is your Age?");
+
+            let ageResponse = Number(age) + 15;
+
+            let quote = "";
+
+            if (ageResponse >= 0 && ageResponse < 35) {
+                quote = "Remember the best is yet to come!";
+            } else if (ageResponse >= 35 && ageResponse < 70) {
+                quote = "Remember now you are stronger then ever!";
+            } else {
+                quote = "Remember, Age is just a number!";
+            }
+
+          const welcomeMsg = document.getElementById("message");
+          
+          welcomeMsg.textContent = "Welcome, " + name + "! You are going to be " + ageResponse + " in 2040! " + quote;
+        </script>
+    </body>
+</html>

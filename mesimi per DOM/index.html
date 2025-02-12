@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <title>Document Test</title>
+</head>
+<style>
+    .message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: blue;
+        margin-top: 150px;
+        font-size: 70px;
+        padding: 30px;
+    }
+</style>
+<body>
+    <h1 id="message" class="message">Welcome</h4>
+    <script>
+        let name = prompt("What is your Name?");
+
+        let age = prompt("what is your Age?");
+
+        let ageResponse = Number(age) + 15;
+
+        // Define the quotes based on the age range
+        let quote = "";
+
+        if (ageResponse >= 0 && ageResponse < 35) {
+        quote = "Remember The best is yet to come!";
+        } else if (ageResponse >= 35 && ageResponse < 70) {
+        quote = "Remember Experience is the teacher of all things.";
+        } else {
+        quote = "Remember Age is merely the number of years the world has been enjoying you!";
+    }
+
+        const welcomeMsg = document.getElementById("message");
+
+        welcomeMsg.textContent = "Welcome " + name + ". You will be " + ageResponse + " in 2050! " + quote;
+
+    </script>
+</body>
+</html>
