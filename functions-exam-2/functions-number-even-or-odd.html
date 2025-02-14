@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .submit-number {
+            background-color: gray;
+            color: white;
+            font-size: 25px;
+            border: none;
+            border-radius: 5px;
+            padding: 5 10;
+            margin: 20px;
+            border:none;
+        }
+        .submit-number:hover {
+            background-color: black;
+        }
+
+        .container {
+            display:grid;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+            width: auto;
+            font-family: sans-serif;
+            border: solid 1px;
+            margin: 50px;
+            border-radius: 10px;
+            padding: 50px;
+        }
+        body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; 
+        margin: 0;
+        }
+
+        .results {
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            font-family: sans-serif;
+            border-radius: 5px;
+            padding: 30px;
+        }
+    </style>
+    <div class="container">
+        <h2>JavaScript Functions and DOM Manipulation</h2>
+
+        <input type="text" id="numberInput" placeholder="Enter number">
+        <button class="submit-number" onclick="checkEvenOdd()">Check Number</button>
+        </div>
+        
+        <div id="results" class="results">
+          
+        </div>
+        <script>
+            function checkEvenOdd() {
+                let number = document.getElementById("numberInput").value;
+                let results = document.getElementById("results");
+    
+                if (number === "") {
+                    results.innerText = "Please fill in the number in the field!";
+                    results.style.backgroundColor = "gray";
+                    results.style.color = "white";
+                    return;
+                }
+                if ( isNaN(number)){
+                    results.innerText = "that is not a valid number!";
+                    results.style.backgroundColor = "red";
+                    results.style.color = "white";
+                    return;
+                }
+                if (number % 2 === 0) {
+                    results.innerText = number + " is Even";
+                    results.style.backgroundColor = "blue";
+                    results.style.color = "white";
+                } else {
+                    results.innerText = number + " is Odd";
+                    results.style.backgroundColor = "red";
+                    results.style.color = "white";
+                }
+            }
+
+        </script>
+</body>
+</html>

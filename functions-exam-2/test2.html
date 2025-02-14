@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions</title>
+</head>
+<body>
+    <style>
+        .form {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            border: solid 1px;
+            border-radius: 8px;
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        .results {
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            width: auto;
+            height: 100vh;
+
+
+        }
+
+        .button {
+            background-color: gray;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            border:none;
+            padding: 10px 5px;
+            margin: 15px;
+        }
+
+        .button:hover {
+            background-color: black;
+            color:white;
+        }
+    </style>
+    <div class="form">
+        <h4>Please enter a Number: </h4>
+        <input type="text" placeholder="Enter the number" id="number">
+        <button class="button" onclick="displayResults()" class="button">Check the Number</button>
+    </div>
+    <div class="results" id="results"></div>
+    <script>
+        let results = document.getElementById("results");
+
+        function doubleNumber(a, b = 2){return a * b};
+
+        function displayResults(){
+            let inputNumber = document.getElementById('number').value;
+            let number = parseFloat(inputNumber);
+
+            if(isNaN(number)) {
+                results.innerText = "Please enter a valid number!";
+                results.style.backgroundColor = "red";
+                results.style.color = "white";
+            } else {
+                let showResults = doubleNumber(number);
+
+                results.innerText = `the doubled number of: ${number} is: ${showResults}`;
+                results.style.backgroundColor = "blue";
+                results.style.color = "white";                
+
+            }
+        }
+
+    </script>
+</body>
+</html>

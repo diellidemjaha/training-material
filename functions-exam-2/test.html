@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .results {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 30px;
+            /* color: blue; */
+            font-family: sans-serif;
+
+        }
+
+        .button {
+            background-color: blue;
+            font-size: 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+          
+        }
+
+        .input-info {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 15px 10px 15px;
+
+        }
+    </style>
+    <div class="input-info">
+
+        <h4>Enter Number:</h4>
+        <input type="text" placeholder="Enter the number" id="number">
+        <button onclick="doubleNumber()" class="button">Check number</button>
+    </div>
+    <div class="results" id="results"></div>
+    <script>
+        const results = document.getElementById("results");
+
+        function multiply(a, b=2) {return a / b};
+
+        function doubleNumber() {
+            let numberInput = document.getElementById("number").value;
+            let number = parseFloat(numberInput);
+
+            if(isNaN(number)){
+                results.innerText = "Please enter a valid number!";
+                results.style.backgroundColor = "red";
+            } else {
+                let result = multiply(number);
+
+                results.innerText = `The result divided by 2 for ${number} is : ${result}`;
+                results.style.backgroundColor = "blue";
+                results.style.color = "white"
+            }
+        }
+
+
+    </script>
+</body>
+</html>
