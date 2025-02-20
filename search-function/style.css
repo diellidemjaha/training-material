@@ -1,0 +1,18 @@
+.title {
+    color:white;
+    font-family: sans-serif;
+}
+
+.our-cool-search {
+    background-color: gray;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: auto;
+}
+
+.results {
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+}
