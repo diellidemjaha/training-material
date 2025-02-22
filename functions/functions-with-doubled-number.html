@@ -6,11 +6,13 @@
 </head>
 <body>
     <style>
+
+
         .results {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 75vh;
             font-size: 30px;
             color: blue;
             font-family: sans-serif;
@@ -24,7 +26,12 @@
             border: none;
             border-radius: 5px;
             margin: 10px;
+            padding: 10px 25px;
           
+        }
+
+        .button:hover {
+            background-color: gray;
         }
 
         .input-info {
@@ -32,7 +39,16 @@
             justify-content: center;
             align-items: center;
             margin: 10px 15px 10px 15px;
+            /* height:100vh; */
+            font-family: sans-serif;
 
+        }
+
+        .input-info input{
+            border:none;
+            height: 30px;
+            width: 100%;
+            border-radius: 10px;
         }
     </style>
     <div class="input-info">
@@ -45,22 +61,25 @@
     <script>
 
         function multiply(a, b = 2) { return a * b; }
-        let results = document.getElementById("results");
+        let results = document.querySelector("#results");
+        let changeButton = document.querySelector(".button");
         
         
         
         function checkNumber() {
-            let numberInput = document.getElementById("number").value;
+            let numberInput = document.querySelector("#number").value;
             let number = parseFloat(numberInput);
             
             
            if (isNaN(number)) {
                 results.innerText = "Please enter a valid number!";
                 results.style.color = "red";
+                changeButton.style.backgroundColor = "gray";
             } else {
                 let result = multiply(number);
                 results.innerText = `Result of doubling ${number} is: ${result}`;
                 results.style.color = "blue";
+                changeButton.style.backgroundColor = "gray";
             }
             
         }
