@@ -3,30 +3,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Object Constructors in Javascript</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="results"></div>
-    <script>
-        function Person(first, last, age, eye) {
-  this.firstName = first;
-  this.lastName = last;
-  this.age = age;
-  this.eyeColor = eye;
-}
+    <script src="script-2.js">
 
-const myFather = new Person("John", "Doe", 50, "blue");
-const myMother = new Person("Sally", "Rally", 48, "green");
-const mySister = new Person("Anna", "Rally", 18, "green");
-
-const mySelf = new Person("Johnny", "Rally", 22, "green");
-
-let results = document.querySelector(".results");
-
-results.textContent = myFather.firstName + " " + myFather.lastName;
-results.style.fontFamily = "sans-serif";
-results.style.color = "red";
-results.style.padding = "50px 50px";
-results.style.fontSize = "100px";
     </script>
 </body>
 </html>
