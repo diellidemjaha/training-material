@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="results">Hello World</div>
+    <button type="button" class="button">Change the colors</button>
+    <script>
+        let results = document.querySelector(".results");
+        let button = document.querySelector(".button");
+
+        function changeColor(){
+            let resultsColor = results.style.color || "red";
+
+            switch (resultsColor) {
+                case "aqua": resultsColor = "green"
+                break;
+                case "red": resultsColor = "blue"
+                break;
+                case "blue": resultsColor = "yellow"
+                break;
+                case "yellow": resultsColor = "brown"
+                break;
+                default: resultsColor = "aqua"
+            }
+            results.style.color = resultsColor;
+        }
+        button.addEventListener("click", changeColor);
+    </script>
+</body>
+</html>

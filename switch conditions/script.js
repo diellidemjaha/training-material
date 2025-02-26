@@ -3,6 +3,7 @@ let fruitSelect = document.querySelector("#fruits"); // Correct selection using 
 
 
 results.innerHTML = "Please select a fruit."
+
     function FruitResults () {
     let fruitChoice = fruitSelect.value; // Get selected value when user changes selection
     let message;
