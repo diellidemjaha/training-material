@@ -138,4 +138,3 @@ addPerson(new Person("Era", "Berisha", 30, "green", "Product Manager", "FinTech 
         addPerson(new Person("Dielli", "Demjaha", 35, "brown", "Software Engineer", "Tech Corp", 75000, "Tesla", "Model S", 2022));
         addPerson(new Person("Arber", "Gashi", 28, "blue", "UI/UX Designer", "Creative Agency", 62000, "BMW", "X5", 2020));
         addPerson(new Person("Era", "Berisha", 30, "green", "Product Manager", "FinTech Inc", 90000, "Audi", "A4", 2021));
->>>>>>> 7c5ca798d9b465ac948d148da4c8f3b996ddecb7
