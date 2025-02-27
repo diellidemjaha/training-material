@@ -1,8 +1,23 @@
 .results {
     font-family: sans-serif;
     font-size: 22px;
-    color: violet;
+    color: gray;
     padding: 12px 20px;
     font-weight: bold;
 
+}
+
+h2 {
+    font-family: sans-serif;
+    font-size: 28px;
+}
+
+body {
+    margin: 5%;
+    padding: 20px 40px;
+}
+
+.person-title {
+    color: black;
+    
 }
