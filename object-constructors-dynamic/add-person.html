@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Person</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h2 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 20px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+            /* transition: background 0.3s; */
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #buttons-container {
+            margin-top: 20px;
+        }
+
+        .person-button {
+            background: #28a745;
+            border: none;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            display: block;
+            width: 50%;
+            margin-top: 5px;
+            border-radius: 5px;
+            /* transition: background 0.3s; */
+        }
+
+        .person-button:hover {
+            background: #1e7e34;
+        }
+
+        .results {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+    </style>
+    <h2>Add a New Client</h2>
+
+    <form id="person-form">
+        <label>First Name: <input type="text" id="firstName" required></label><br><br>
+        <label>Last Name: <input type="text" id="lastName" required></label><br><br>
+        <label>Age: <input type="number" id="age" required></label><br><br>
+        <label>Eye Color: <input type="text" id="eyeColor" required></label><br><br>
+
+        <h3>Job Details</h3>
+        <label>Job Title: <input type="text" id="jobTitle" required></label><br><br>
+        <label>Company: <input type="text" id="company" required></label><br><br>
+        <label>Salary: <input type="number" id="salary" required></label><br><br>
+
+        <h3>Car Details</h3>
+        <label>Car Brand: <input type="text" id="carBrand" required></label><br><br>
+        <label>Car Model: <input type="text" id="carModel" required></label><br><br>
+        <label>Car Year: <input type="number" id="carYear" required></label><br><br>
+
+        <button type="submit">Add Client</button>
+    </form>
+
+    <h2>People List</h2>
+    <div id="buttons-container"></div>
+    <div class="results"></div>
+
+    <script>
+        function Person(name, last, age, eyes, jobTitle, company, salary, carBrand, carModel, carYear) {
+            this.firstName = name;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eyes;
+
+            this.job = {
+                title: jobTitle,
+                company: company,
+                salary: salary,
+                getJobDetails: function() {
+                    return `${this.title} at ${this.company} earning $${this.salary} per year.`;
+                }
+            };
+
+            this.car = {
+                brand: carBrand,
+                model: carModel,
+                year: carYear,
+                getCarDetails: function() {
+                    return `${this.year} ${this.brand} ${this.model}`;
+                }
+            };
+
+            this.getFullName = function() {
+                return `${this.firstName} ${this.lastName}`;
+            };
+        }
+
+        let people = [];
+
+        function addPerson(person) {
+            people.push(person);
+            let buttonsContainer = document.getElementById("buttons-container");
+
+            let button = document.createElement("button");
+            button.textContent = `Show ${person.getFullName()} Details`;
+            button.addEventListener("click", function() {
+                showPersonDetails(person);
+            });
+
+            buttonsContainer.appendChild(button);
+        }
+
+        function showPersonDetails(person) {
+            let results = document.querySelector(".results");
+            results.innerHTML = `
+                <h3>Details for ${person.getFullName()}</h3>
+                <p><strong>Age:</strong> ${person.age} years old</p>
+                <p><strong>Eye Color:</strong> ${person.eyeColor}</p>
+                <p><strong>Job:</strong> ${person.job.getJobDetails()}</p>
+                <p><strong>Car:</strong> ${person.car.getCarDetails()}</p>
+            `;
+        }
+
+        document.getElementById("person-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let age = document.getElementById("age").value;
+            let eyeColor = document.getElementById("eyeColor").value;
+            let jobTitle = document.getElementById("jobTitle").value;
+            let company = document.getElementById("company").value;
+            let salary = document.getElementById("salary").value;
+            let carBrand = document.getElementById("carBrand").value;
+            let carModel = document.getElementById("carModel").value;
+            let carYear = document.getElementById("carYear").value;
+
+            let newPerson = new Person(firstName, lastName, age, eyeColor, jobTitle, company, salary, carBrand, carModel, carYear);
+            addPerson(newPerson);
+
+            document.getElementById("person-form").reset();
+        });
+
+    </script>
+</body>
+</html>
