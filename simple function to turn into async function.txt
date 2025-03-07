@@ -1,0 +1,17 @@
+Detyre shtepie:
+ktheni kete funksion te thjeshte ne funksion Asinkron (Asynchronous function) duke perdorur metoden "async/await" dhe metoden e error handling "try{}catch{}"
+
+--------
+
+function fetchData() {
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then(response => response.json())
+    .then(data => console.log("Plain Function:", data))
+    .catch(error => console.error("Error:", error));
+}
+
+fetchData();
+
+--------
+
+Te henen flasim Rreth kesaj detyre ne sesionin e pare dhe bejm parapergaditje per Kuiz. Mos harroni, Ne oren e dyte e kemi Kuizin per funkcionet ne pergjithsi dhe funkcionet asinkrone.
