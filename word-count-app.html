@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Count app</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 10px;
+        }
+     textarea {
+  width: 80%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  margin: 20px;
+}
+h1 {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+    </style>
+    <h1>Text count app</h1>
+    <textarea class="textInput" placeholder="Start typing..."></textarea>
+    <p>Characters: <span class="textCount">0</span></p>
+    <script>
+        let textInput = document.querySelector(".textInput");
+
+        let results = document.querySelector(".textCount");
+
+        function countCharacters(){
+            let charactersCounted = textInput.value.length;
+
+            results.textContent = charactersCounted;
+        }
+
+        //beni nje deklarate kushtore ku "textInput.value.length" kur eshte me e madhe se: 50 te behet me ngjyre te kuqe klasa ne CSS (mund ta perdorni innherHTML, apo results.style.color apo classList.add())
+        // SHIKONI LINKUN NE MOODLE JU LUTEM
+        // if(...) {
+        //     ...
+        // } else {
+        //     ...
+        // }
+
+        textInput.addEventListener("input", countCharacters);
+        </script>
+</body>
+</html>
