@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Gallery with JavaScript</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .thumbnails img { width: auto; height: 20vh; cursor: pointer; margin: 5px; }
+        .main-image img { 
+        width: auto; 
+        height: 70vh; 
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-out {
+        opacity: 0;
+    }
+
+    .fade-in {
+        opacity: 1;
+    }
+    </style>
+</head>
+<body>
+    <h2>Interactive Image Gallery</h2>
+    <div class="main-image">
+        <img id="displayImage" src="./001.jpg" alt="Main Image">
+    </div>
+    <div class="thumbnails">
+        <img src="./001.jpg" onclick="changeImage(this)">
+        <img src="./002.jpg" onclick="changeImage(this)">
+        <img src="./003.jpg" onclick="changeImage(this)">
+    </div>
+
+    <script>
+       function changeImage(imgElement) {
+            let displayImage = document.getElementById("displayImage");
+
+            
+            displayImage.classList.remove("fade-out");
+
+            displayImage.classList.add("fade-out");
+
+            setTimeout(() => {
+                displayImage.src = imgElement.src;
+
+                displayImage.classList.remove("fade-out");
+            }, 300);
+        }
+    </script>
+</body>
+</html>
