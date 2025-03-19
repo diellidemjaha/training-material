@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Image Gallery Example</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-image img {
+            height: 75vh;
+            width: auto;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .imageThumbnails img {
+            height: 15vh;
+            width: auto;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+    </style>
+    <div class="main-image">
+        <img class="displayImage" src="./001.jpg" alt="Main Image">
+        </div>
+
+    </div>
+    <div class="imageThumbnails">
+        <img src="./001.jpg" onclick="changeImage(this)" alt="foto 1">
+        <img src="./002.jpg" onclick="changeImage(this)" alt="foto 2">
+        <img src="./003.jpg" onclick="changeImage(this)" alt="foto 3">
+        <img src="./004.jpeg" onclick="changeImage(this)" alt="foto 4">
+    </div>
+    <script>
+        function changeImage(imgElement) {
+            let displayImage = document.querySelector(".displayImage");
+
+            
+            displayImage.classList.add("fade-out");
+            setTimeout(() => {
+                displayImage.src = imgElement.src;
+                
+                displayImage.classList.remove("fade-out");
+            }, 300);
+        }
+    </script>
+</body>
+</html>
