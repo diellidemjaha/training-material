@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Translation</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; transition: 0.5s; }
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+        .hidden { display: none; }
+        button { padding: 3px 5px;; font-size: 16px; cursor: pointer; margin: 5px; }
+        .container {
+            display: flex;
+            justify-content:flex-start;
+            font-size: 10px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: start;
+            margin-top: 10%;
+            padding: 25px;
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1 id="title">Welcome to my website</h1>
+        <button id="toggleLang">Switch to Albanian 🇦🇱</button>
+        <button id="toggleMode">Light/Dark Mode</button>
+    </div>
+    <div class="content">
+
+        <p id="description">This is a simple example of website translation.</p>
+    </div>
+
+    <script>
+        // Create a div for translation
+        let translationDiv = document.createElement("div");
+        translationDiv.id = "translation";
+        document.body.appendChild(translationDiv);  // Append to body
+
+        // Store text content in both languages
+        const content = {
+            en: {
+                title: "Welcome to my website",
+                description: "This is a simple example of website translation.",
+                button: "Switch to Albanian 🇦🇱",
+                toggle: "Light/Dark Mode"
+            },
+            sq: {
+                title: "Mirësevini në faqen time",
+                description: "Ky është një shembull i thjeshtë i përkthimit të faqes.",
+                button: "Kalo në Anglisht 🇬🇧",
+                toggle: "Drite/Natë opcioni"
+            }
+        };
+
+        let currentLang = "en"; // Default language
+
+        function toggleLanguage() {
+            currentLang = currentLang === "en" ? "sq" : "en"; // Toggle language
+
+            // Change text based on the selected language
+            document.getElementById("title").textContent = content[currentLang].title;
+            document.getElementById("description").textContent = content[currentLang].description;
+            document.getElementById("toggleLang").textContent = content[currentLang].button;
+            document.getElementById("toggleMode").textContent = content[currentLang].toggle;
+
+            // Toggle class on translationDiv
+            translationDiv.classList.toggle("hidden");
+        }
+
+        function toggleMode(){
+            let mode = document.body;
+
+            mode.classList.toggle("dark-mode");
+        }
+
+        // Add event listener to button
+        document.getElementById("toggleLang").addEventListener("click", toggleLanguage);
+        document.getElementById("toggleMode").addEventListener("click", toggleMode);
+    </script>
+
+</body>
+</html>
