@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; transition: 0.3s; }
+        .dark-mode { background-color: #121212; color: white; }
+        .dark-mode button {color: white}
+        .button-light-mode { 
+            padding: 10px 20px; 
+            /* margin-top: 20px; */
+            /* position: absolute; */
+            top: 15px; 
+            right: 15px;
+            background-color: transparent;
+            /* border: none; */
+         }
+
+         .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h2>Dark Mode Toggle</h2>
+        <button class="button-light-mode" onclick="toggleDarkMode()">Toggle Light/Dark Mode</button>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>
