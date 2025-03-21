@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Clock</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .clock { font-size: 2em; font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+
+    <h2>Live Clock</h2>
+    <div class="clock" id="clock" style="color:red;"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+            document.getElementById("clock").textContent = formattedTime;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Call the function immediately to display time without waiting 1 second
+        updateClock();
+    </script>
+
+</body>
+</html>
