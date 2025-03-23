@@ -7,30 +7,58 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
         .clock { font-size: 2em; font-weight: bold; color: #333; }
+        button {
+            margin-top: 25px;
+            background-color:red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        button:hover{ 
+
+        background-color: gray;
+        color: black;
+        }
+
+        .button-clicked {
+            background-color: gray;
+            color: black;
+        }
     </style>
 </head>
 <body>
 
     <h2>Live Clock</h2>
     <div class="clock" id="clock" style="color:red;"></div>
+    <button id="stopClockButton" onclick="stopClock()">Stop the Clock</button>
 
     <script>
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
+        let clock = document.getElementById("clock");
+        let button = document.getElementById("stopClockButton");
 
-            const formattedTime = `${hours}:${minutes}:${seconds}`;
-            document.getElementById("clock").textContent = formattedTime;
+        function updateClock() {
+            const date = new Date();
+            clock.innerHTML = date.toLocaleTimeString();
         }
 
         // Update the clock every second
-        setInterval(updateClock, 1000);
+        const myInterval = setInterval(updateClock, 1000);
 
         // Call the function immediately to display time without waiting 1 second
         updateClock();
-    </script>
+
+        function stopClock() {
+            button.classList.add("button-clicked");
+            button.innerHTML = "Clock stopped!";
+            clearInterval(myInterval);
+        }
+
+
+</script>
 
 </body>
 </html>
