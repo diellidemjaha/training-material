@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach and for-loop methods in JavaScript</title>
+</head>
+<body>
+    <style>
+        .results {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 10px;
+            padding: 10px 20px;
+            border: solid 1px;
+            border-radius: 8px;
+        }
+    </style>
+    <div class="results"></div>
+    <script>
+        let result = document.querySelector(".results");
+
+        const students = [{name:"Sara", lastname:"Zakuti"},
+            {name:"Enis", lastname:"Xhekaj"},
+            {name:"Arion", lastname:"Borovci"},
+            {name:"Aron", lastname:"Kosova"}
+        ];
+
+        //FOR LOOP
+
+        // for (i=0; i < students.length; i++) {
+        //     studentItem = students[i];
+        //     let listItem = document.createElement("div");
+
+        //     listItem.classList.add("results");
+
+        //     listItem.innerHTML = `${studentItem.name} lastname: ${studentItem.lastname}`;
+
+        //     result.appendChild(listItem);
+        // }
+
+        // FOREACH LOOP
+        // students.forEach(student => {
+        //     let listItem = document.createElement("div");
+        //     listItem.classList.add("results");
+
+        //     listItem.innerHTML = `${student.name}`;
+
+        //     result.appendChild(listItem);
+        // });
+    </script>
+</body>
+</html>
