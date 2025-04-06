@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Weather Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card { min-height: 10vh; }
+        .carousel-control-prev, .carousel-control-next { width: 5%; }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: black;
+            border-radius: 50%;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Live Weather Carousel</h2>
+        <div id="cityCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner" id="carouselContent"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#cityCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#cityCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = "bec773d1faf0081c3e362013aea7e60a"; // Replace with your API key
+        const cities = [
+            { name: "New York", icon: "🌆", description: "The city that never sleeps." },
+            { name: "London", icon: "🌧️", description: "Famous for its rain." },
+            { name: "Tokyo", icon: "🏯", description: "A mix of tradition and technology." },
+            { name: "Paris", icon: "🗼", description: "City of love and lights." },
+            { name: "Dubai", icon: "🏜️", description: "The futuristic desert city." },
+            { name: "Rome", icon: "🏛️", description: "Ancient architecture and culture." },
+            { name: "Berlin", icon: "🏰", description: "Rich history and modern art." },
+            { name: "Sydney", icon: "🌊", description: "Beautiful beaches and skyline." },
+            { name: "Los Angeles", icon: "🌴", description: "Hollywood and palm trees." }
+        ];
+
+        const carouselContent = document.getElementById("carouselContent");
+
+        async function fetchTemperature(city) {
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data.main.temp);
+                return data.main.temp + "°C";
+            } catch (error) {
+                console.error(`Error fetching weather for ${city}:`, error);
+                return "N/A";
+            }
+        }
+
+        async function createCarouselSlides() {
+            let slides = "";
+            for (let i = 0; i < cities.length; i += 3) {
+                const chunk = cities.slice(i, i + 3);
+                const isActive = i === 0 ? "active" : "";
+                slides += `<div class="carousel-item ${isActive}"><div class="row justify-content-center g-4">`;
+
+                for (let city of chunk) {
+                    const temperature = await fetchTemperature(city.name);
+                    slides += `
+                        <div class="col-md-4">
+                            <div class="card shadow-sm text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">${city.icon} ${city.name}</h5>
+                                    <p class="card-text">${city.description}</p>
+                                    <span class="badge bg-primary">${temperature}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                slides += `</div></div>`;
+            }
+            carouselContent.innerHTML = slides;
+        }
+
+        createCarouselSlides();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

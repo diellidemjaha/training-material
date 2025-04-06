@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalStorage Example</title>
+</head>
+<body>
+  <h2>Shkruaj emrin tënd:</h2>
+  <input type="text" id="nameInput" placeholder="Emri yt...">
+  <button class="button">Ruaj Emrin</button>
+  <button class="clearButton">Fshij te dhenat</button>
+
+  <h3 id="greeting"></h3>
+
+  <script>
+    
+    function saveName() {
+      let name = document.getElementById("nameInput").value;
+      localStorage.setItem("userName", name);
+      showGreeting(); // Call greeting after saving
+    }
+
+    function showGreeting() {
+      let savedName = localStorage.getItem("userName");
+      if (savedName) {
+        document.getElementById("greeting").textContent = "Përshëndetje, " + savedName + "!";
+      }
+    }
+
+    function clearStorage() {
+        
+            localStorage.clear();
+            document.getElementById("greeting").textContent = "Emri u fshi me sukses!";
+        
+    }
+
+
+    let button = document.querySelector(".button");
+    let clearButton = document.querySelector(".clearButton");
+
+    button.addEventListener("click", saveName)
+
+    clearButton.addEventListener("click", clearStorage)
+
+
+
+    // Thirret automatikisht kur hapim faqen
+    showGreeting();
+  </script>
+</body>
+</html>
