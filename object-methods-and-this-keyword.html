@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Methods and "this" keyword in JS</title>
+</head>
+<body>
+    <script>
+        const person = {
+name: "Arta",
+dob: "23 November 2007",
+greet: function() {
+console.log("Hello, my name is " + this.name + " and I was born in " + this.dob);
+}
+};
+
+person.greet(); // Output: Hello, my name is Arta
+
+// const student1 = {
+// name: "Elira",
+// class: "10A",
+// grades: [80, 75, 90],
+// averageGrade: function() {
+// let sum = 0;
+// for(let i = 0; i < this.grades.length; i++) {
+// sum += this.grades[i];
+// }
+// return sum / this.grades.length;
+// },
+// passOrFail: function() {
+// const avg = this.averageGrade();
+// if (avg >= 50) {
+// return `${this.name} has passed.`;
+// } else {
+// return `${this.name} has failed.`;
+// }
+// }
+// };
+// console.log(student1.averageGrade());
+// console.log(student1.passOrFail());
+    </script>
+</body>
+</html>
