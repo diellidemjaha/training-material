@@ -1,48 +1,55 @@
 import React, { createContext, useState, useContext } from "react";
 
 // 1. Krijo Context
-const ThemeContext = createContext();
+const LanguageContext = createContext();
 
 // 2. Krijo Provider
-function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light");
+function LanguageProvider({ children }) {
+  const [language, setLanguage] = useState("EN");
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+  const switchLanguage = (lang) => {
+    setLanguage(lang);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <LanguageContext.Provider value={{ language, switchLanguage }}>
       {children}
-    </ThemeContext.Provider>
+    </LanguageContext.Provider>
   );
 }
 
-// 3. Përdor useContext
-function ThemedComponent() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+// 3. Komponent që konsumon gjuhën
+function Greeting() {
+  const { language } = useContext(LanguageContext);
 
-  const style = {
-    background: theme === "light" ? "#fff" : "#333",
-    color: theme === "light" ? "#000" : "#fff",
-    padding: "20px",
-    textAlign: "center"
+  const messages = {
+    EN: "Hello, welcome!",
+    AL: "Përshëndetje, mirësevini!",
+    DE: "Hallo, willkommen!"
   };
 
+  return <h2>{messages[language]}</h2>;
+}
+
+// 4. Komponent për butonat
+function LanguageButtons() {
+  const { switchLanguage } = useContext(LanguageContext);
   return (
-    <div style={style}>
-      <h2>Aktualisht: {theme} mode</h2>
-      <button onClick={toggleTheme}>Ndrysho Temën</button>
+    <div>
+      <button onClick={() => switchLanguage("EN")}>English</button>
+      <button onClick={() => switchLanguage("AL")}>Shqip</button>
+      <button onClick={() => switchLanguage("DE")}>Deutsch</button>
     </div>
   );
 }
 
-// 4. App kryesor
+// 5. App kryesor
 function App() {
   return (
-    <ThemeProvider>
-      <ThemedComponent />
-    </ThemeProvider>
+    <LanguageProvider>
+      <Greeting />
+      <LanguageButtons />
+    </LanguageProvider>
   );
 }
 
