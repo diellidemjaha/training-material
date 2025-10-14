@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+
+    <p id="hello-world"></p>
+
+    <script>
+        let button = document.getElementById("body");
+        let helloWorld = document.getElementById("hello-world");
+
+        button.addEventListener("keydown", function(event) {
+  if (event.code == 'Digit0' || event.code == 'KeyD') {
+    helloWorld.innerHTML = "<b>Hello World!</b><br><hr><b>How are you?</b>";
+  }});
+    </script>
+</body>
+</html>
