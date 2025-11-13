@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="player" style="width:50px;height:50px;background:red;position:absolute;"></div>
+<div id="treasure" style="width:50px;height:50px;background:gold;position:absolute;top:150px;left:150px;"></div>
+
+<script>
+    const player = document.getElementById("player");
+const treasure = document.getElementById("treasure");
+
+let posX = 0;
+let posY = 0;
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "ArrowRight") posX += 10;
+  if (event.key === "ArrowLeft") posX -= 10;
+  if (event.key === "ArrowUp") posY -= 10;
+  if (event.key === "ArrowDown") posY += 10;
+
+  player.style.transform = `translate(${posX}px, ${posY}px)`;
+
+  const playerBox = player.getBoundingClientRect();
+  const treasureBox = treasure.getBoundingClientRect();
+
+  if (
+    playerBox.x < treasureBox.x + treasureBox.width &&
+    playerBox.x + playerBox.width > treasureBox.x &&
+    playerBox.y < treasureBox.y + treasureBox.height &&
+    playerBox.y + playerBox.height > treasureBox.y
+  ) {
+    treasure.innerText = "🎉 You found the treasure!";
+  }
+});
+</script>
+</body>
+</html>
